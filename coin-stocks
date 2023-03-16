@@ -1,0 +1,41 @@
+//////////////////////////////////////////////////////////////////////////
+offers = function()
+crypto_user = params[1]
+crypto_pass = params[2]
+coinName = params[3]
+crypto = include_lib("/lib/blockchain.so")
+wallet = crypto.login_wallet(crypto_user, crypto_pass)
+wallets3 = wallet.get_global_offers(coinName)
+print("<color=yellow>" + wallets3)
+end function
+//////////////////////////////////////////////////////////////////////////
+list = function()
+crypto_user = params[1]
+crypto_pass = params[2]
+crypto = include_lib("/lib/blockchain.so")
+wallet = crypto.login_wallet(crypto_user, crypto_pass)
+wallets3 = wallet.list_global_coins
+print("<color=yellow>" + wallets3)
+end function
+///////////////////////////////////////////////////////////////////////////
+nodes = function()
+crypto_user = params[1]
+crypto_pass = params[2]
+coinName = params[2]
+crypto = include_lib("/lib/blockchain.so")
+wallet = crypto.login_wallet(crypto_user, crypto_pass)
+wallets3 = wallet.show_nodes(coinName)
+print("<color=yellow>" + wallets3)
+end function
+///////////////////////////////////////////////////////////////////////////
+if params[0] == "wallet:nodes" then
+	nodes()
+end if
+
+if params[0] == "wallet:list" then
+	list()
+end if
+
+if params[0] == "wallet:offers" then
+	offers()
+end if

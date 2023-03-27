@@ -28,6 +28,20 @@ wallets3 = wallet.show_nodes(coinName)
 print("<color=yellow>" + wallets3)
 end function
 ///////////////////////////////////////////////////////////////////////////
+showpin = function()
+crypto_user = params[1]
+crypto_pass = params[2]
+coinName = params[2]
+crypto = include_lib("/lib/blockchain.so")
+wallet = crypto.login_wallet(crypto_user, crypto_pass)
+wallets3 = wallet.get_pin
+print("<color=yellow>Your_PIN: " + wallets3)
+end function
+///////////////////////////////////////////////////////////////////////////
+if params[0] == "wallet:showpin" then
+	showpin()
+end if
+
 if params[0] == "wallet:nodes" then
 	nodes()
 end if
